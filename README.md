@@ -12,10 +12,8 @@ A new Flutter project with [Marvel Comics api](https://developer.marvel.com/).
 ## Packages used
 
 - intl: ^0.18.1
-- provider: ^6.0.5
 - crypto: ^3.0.3
 - convert: ^3.1.1
-- http: ^1.1.0
 - mvc_pattern: ^8.12.0
 - dio: ^5.3.2
 - cached_network_image: ^3.2.3
