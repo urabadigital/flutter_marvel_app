@@ -46,4 +46,4 @@ $ flutter packages get
 $ flutter run
 ```
 
-**Download _.apk_ file from [Here](https://mega.nz/file/vxoU3abQ#mgHDk0Q6e8yRqyHZzzleYmoIFMBB5EsjAfyS-2-59h8)**
+**Download _.apk_ file from [Here](https://mega.nz/file/S0h1EACA#nKCWbmU__ydgrdbzTs9gla0eFxOQ9CZnf3h0m2Mk9c0)**
