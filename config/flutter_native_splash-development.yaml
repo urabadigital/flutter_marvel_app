@@ -1,0 +1,16 @@
+# flutter_native_splash-production.yaml
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/icon/Bia-icon512.png
+  #branding: assets/icon/icon.png
+  color_dark: "#121212"
+  image_dark: assets/icon/Bia-icon512.png
+  #branding_dark: assets/icon/Bia-icon512.png
+
+  android_12:
+    image: assets/icon/Bia-icon512.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/icon/Bia-icon512.png
+    icon_background_color_dark: "#121212"
+
+  web: false
