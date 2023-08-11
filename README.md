@@ -27,6 +27,16 @@ A new Flutter project with [Marvel Comics api](https://developer.marvel.com/).
 
 ## Screenshots
 
+<br>
+<p align="center">
+<img src="screenshots/Screenshot_1691765579.png" width="30%">
+<img src="screenshots/Screenshot_1691765586.png" width="30%">
+<img src="screenshots/Screenshot_1691765596.png" width="30%">
+<img src="screenshots/Screenshot_1691765602.png" width="30%">
+<img src="screenshots/Screenshot_1691765623.png" width="30%">
+<img src="screenshots/Screenshot_1691765649.png" width="30%">
+</p>
+
 
 ## How to use
 
