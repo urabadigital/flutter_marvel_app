@@ -1,4 +1,4 @@
-# marvelapp
+# flutter marvel app
 
 A new Flutter project with [Marvel Comics api](https://developer.marvel.com/).
 
@@ -56,4 +56,4 @@ $ flutter packages get
 $ flutter run
 ```
 
-**Download _.apk_ file from [Here](https://mega.nz/file/S0h1EACA#nKCWbmU__ydgrdbzTs9gla0eFxOQ9CZnf3h0m2Mk9c0)**
+**Download _.apk_ file from [Here](https://mega.nz/file/29Bj3KJR#mDZE-MSnCkwNKP3td1TH65b3poFrvBVN8skAUNKlpSU)**
