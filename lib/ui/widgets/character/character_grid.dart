@@ -38,30 +38,32 @@ class CharacterGrid extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Hero(
-              tag: heroTag + character.id.toString(),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(15)),
-                child: CachedNetworkImage(
-                  width: double.infinity,
-                  height: 140,
-                  fit: BoxFit.cover,
-                  imageUrl:
-                      "${character.thumbnail?.path}.${character.thumbnail?.extension}",
-                  placeholder: (context, url) => Container(
-                      width: double.infinity,
-                      height: 140,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).hintColor.withOpacity(0.15),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Center(child: CupertinoActivityIndicator())),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
+            Expanded(
+              child: Hero(
+                tag: heroTag + character.id.toString(),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  child: CachedNetworkImage(
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    imageUrl:
+                        "${character.thumbnail?.path}.${character.thumbnail?.extension}",
+                    placeholder: (context, url) => Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).hintColor.withOpacity(0.15),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child:
+                            const Center(child: CupertinoActivityIndicator())),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 5),
-            Flexible(
+            SizedBox(
+              height: 20,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Text(
