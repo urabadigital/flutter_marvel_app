@@ -23,8 +23,7 @@ Future<List<Character>> getCharacters({
   required int offset,
   String? searchTerm,
 }) async {
-  final hash =
-      generateMd5(timestamp + Keys.privateKey + Keys.publicKey).toString();
+  final hash = generateMd5(timestamp + Keys.privateKey + Keys.publicKey);
   try {
     offset = ((page - 1) * itemsPerPage);
     Map<String, dynamic> queryParameters = {
@@ -56,8 +55,7 @@ Future<List<Comic>> getComics({
   int? offset,
   String? searchTerm,
 }) async {
-  final hash =
-      generateMd5(timestamp + Keys.privateKey + Keys.publicKey).toString();
+  final hash = generateMd5(timestamp + Keys.privateKey + Keys.publicKey);
   try {
     offset = ((page - 1) * itemsPerPage);
     Map<String, dynamic> queryParameters = {
@@ -87,8 +85,7 @@ Future<List<Comic>> getComics({
 Future<List<Comic>> getPopularComics(int characterId) async {
   final url =
       'http://gateway.marvel.com/v1/public/characters/$characterId/comics';
-  final hash =
-      generateMd5(timestamp + Keys.privateKey + Keys.publicKey).toString();
+  final hash = generateMd5(timestamp + Keys.privateKey + Keys.publicKey);
   try {
     Map<String, dynamic> queryParameters = {
       "apikey": Keys.publicKey,
@@ -109,8 +106,7 @@ Future<List<Comic>> getPopularComics(int characterId) async {
 
 Future<List<Character>> getCharacterComics(int comicId) async {
   final url = 'http://gateway.marvel.com/v1/public/comics/$comicId/characters';
-  final hash =
-      generateMd5(timestamp + Keys.privateKey + Keys.publicKey).toString();
+  final hash = generateMd5(timestamp + Keys.privateKey + Keys.publicKey);
   try {
     Map<String, dynamic> queryParameters = {
       "apikey": Keys.publicKey,
@@ -131,8 +127,7 @@ Future<List<Character>> getCharacterComics(int comicId) async {
 
 Future<List<Creator>> getCreatorComics(int comicId) async {
   final url = 'http://gateway.marvel.com/v1/public/comics/$comicId/creators';
-  final hash =
-      generateMd5(timestamp + Keys.privateKey + Keys.publicKey).toString();
+  final hash = generateMd5(timestamp + Keys.privateKey + Keys.publicKey);
   try {
     Map<String, dynamic> queryParameters = {
       "apikey": Keys.publicKey,
@@ -153,8 +148,7 @@ Future<List<Creator>> getCreatorComics(int comicId) async {
 
 Future<List<Comic>> getCreatorPopularComics(int creatorId) async {
   final url = 'http://gateway.marvel.com/v1/public/creators/$creatorId/comics';
-  final hash =
-      generateMd5(timestamp + Keys.privateKey + Keys.publicKey).toString();
+  final hash = generateMd5(timestamp + Keys.privateKey + Keys.publicKey);
   try {
     Map<String, dynamic> queryParameters = {
       "apikey": Keys.publicKey,
@@ -177,8 +171,7 @@ Future<List<Comic>> getAllWithOutComics({
   String? searchName = '',
   int? limit = 20,
 }) async {
-  final hash =
-      generateMd5(timestamp + Keys.privateKey + Keys.publicKey).toString();
+  final hash = generateMd5(timestamp + Keys.privateKey + Keys.publicKey);
   try {
     Map<String, dynamic> queryParameters = {
       "apikey": Keys.publicKey,

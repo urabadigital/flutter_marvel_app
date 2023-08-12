@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             scaffoldMessengerKey: rootScaffoldMessengerKey,
             debugShowCheckedModeBanner: false,
             title: 'Marvel App',
-            theme: !_myChangeNotifier.isWhite
+            theme: _myChangeNotifier.isWhite
                 ? ThemeData(
                     useMaterial3: true,
                     primaryColor: Colors.white,

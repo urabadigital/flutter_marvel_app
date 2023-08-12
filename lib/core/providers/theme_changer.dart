@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-
 class MyChangeNotifier extends ChangeNotifier {
-  bool isWhite = false;
+  bool isWhite = true;
 
   void updateTheme() {
     isWhite = !isWhite;
@@ -11,11 +10,16 @@ class MyChangeNotifier extends ChangeNotifier {
 }
 
 class ThemeChanger extends InheritedWidget {
-  const ThemeChanger({Key? key, required Widget child, required this.myChangeNotifier}) : super(child: child, key: key);
+  const ThemeChanger({
+    super.key,
+    required super.child,
+    required this.myChangeNotifier,
+  });
 
   final MyChangeNotifier myChangeNotifier;
 
-  static ThemeChanger of(BuildContext context) => context.findAncestorWidgetOfExactType<ThemeChanger>()!;
+  static ThemeChanger of(BuildContext context) =>
+      context.findAncestorWidgetOfExactType<ThemeChanger>()!;
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
