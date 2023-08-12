@@ -28,6 +28,14 @@ class SearchCharacterViewState extends StateMVC<SearchCharacterView> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _con.searchTerm = null;
+    _con.editTextController.clear();
+    _con.refresh();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -105,7 +113,8 @@ class SearchCharacterViewState extends StateMVC<SearchCharacterView> {
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.all(Radius.circular(10)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
                           color: Theme.of(context)
                               .colorScheme
                               .primary
@@ -139,7 +148,7 @@ class SearchCharacterViewState extends StateMVC<SearchCharacterView> {
               else
                 Expanded(
                   child: RefreshIndicator(
-                    onRefresh: _con.refresh,
+                    onRefresh: () => _con.refresh(refreshComics: true),
                     child: CustomScrollView(
                       physics: const BouncingScrollPhysics(),
                       controller: _con.scrollCharacterController,

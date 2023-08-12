@@ -39,7 +39,7 @@ class HomeController extends ControllerMVC {
     debouncer.execute(() {
       if (filter == '') {
         searchTerm = null;
-        refresh(refreshComics: false);
+        refresh();
         listenForCharacters();
       } else {
         searchCharacters(filter);
@@ -69,7 +69,7 @@ class HomeController extends ControllerMVC {
   }
 
   void searchCharacters([String? searchTerms]) {
-    refresh(refreshComics: false);
+    refresh();
     searchTerm = searchTerms;
     listenForCharacters();
   }
@@ -123,20 +123,17 @@ class HomeController extends ControllerMVC {
   Future<void> cleanTextEditing() async {
     editTextController.clear();
     searchTerm = null;
-    refresh(refreshComics: false);
+    refresh();
     listenForCharacters();
-    listenForComics();
   }
 
   @override
-  Future<void> refresh({bool refreshComics = true}) async {
+  Future<void> refresh({bool refreshComics = false}) async {
     page = 0;
     offset = 0;
     characters.clear();
     if (refreshComics) {
-      allComics.clear();
       listenForCharacters();
-      listenForComics();
     }
   }
 }

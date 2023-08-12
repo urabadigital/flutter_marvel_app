@@ -102,10 +102,13 @@ class ComicController extends ControllerMVC {
   }
 
   @override
-  void refresh() {
+  Future<void> refresh({bool refreshComics = false}) async {
     page = 0;
     offset = 0;
     allComics.clear();
+    if (refreshComics) {
+      listenForComics();
+    }
   }
 }
 

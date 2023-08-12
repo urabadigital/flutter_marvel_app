@@ -43,19 +43,18 @@ class AllWithOutComicsViewState extends StateMVC<AllWithOutComicsView> {
           },
         ),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: _con.popularComics.isEmpty
-              ? const Expanded(
-                  child: Center(
-                    child: SpinKitThreeBounce(
-                      color: Colors.red,
-                      size: 30.0,
-                    ),
-                  ),
-                )
-              : Column(
+      body: _con.popularComics.isEmpty
+          ? const Center(
+              child: SpinKitThreeBounce(
+                color: Colors.red,
+                size: 30.0,
+              ),
+            )
+          : SafeArea(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Column(
                   children: [
                     Expanded(
                       child: CustomScrollView(
@@ -117,7 +116,8 @@ class AllWithOutComicsViewState extends StateMVC<AllWithOutComicsView> {
                                             decoration: BoxDecoration(
                                               color: Theme.of(context)
                                                   .primaryColor,
-                                              borderRadius: const BorderRadius.only(
+                                              borderRadius:
+                                                  const BorderRadius.only(
                                                 bottomLeft: Radius.circular(10),
                                                 bottomRight:
                                                     Radius.circular(10),
@@ -151,8 +151,8 @@ class AllWithOutComicsViewState extends StateMVC<AllWithOutComicsView> {
                     ),
                   ],
                 ),
-        ),
-      ),
+              ),
+            ),
     );
   }
 }

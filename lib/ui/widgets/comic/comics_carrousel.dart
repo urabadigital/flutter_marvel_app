@@ -29,12 +29,6 @@ class ComicCarrouselWidget extends StatelessWidget {
             child: Container(
               width: 150,
               decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Theme.of(context).primaryColor,
-                    blurRadius: .7,
-                  ),
-                ],
                 color: Theme.of(context).hintColor.withOpacity(0.05),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -94,8 +88,8 @@ class ComicCarrouselWidget extends StatelessWidget {
                       softWrap: true,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style:
-                          const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 14),
                     ),
                   ),
                 ],

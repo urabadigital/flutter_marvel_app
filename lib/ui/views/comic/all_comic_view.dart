@@ -103,7 +103,8 @@ class AllComicsViewState extends StateMVC<AllComicsView> {
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.all(Radius.circular(10)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
                           color: Theme.of(context)
                               .colorScheme
                               .primary
@@ -136,103 +137,112 @@ class AllComicsViewState extends StateMVC<AllComicsView> {
                 )
               else
                 Expanded(
-                  child: CustomScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: _con.scrollComicController,
-                    slivers: [
-                      SliverPadding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        sliver: SliverGrid(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount:
-                                MediaQuery.of(context).size.width > 500 ? 4 : 2,
-                            childAspectRatio: (9 / 16),
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                          ),
-                          delegate: SliverChildBuilderDelegate(
-                            (_, i) {
-                              final comic = _con.allComics[i];
-                              return Stack(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (_) => ComicDetailsView(
-                                            comic: comic,
-                                            heroTag: 'comic_ detail',
+                  child: RefreshIndicator(
+                    onRefresh: () => _con.refresh(refreshComics: true),
+                    child: CustomScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      controller: _con.scrollComicController,
+                      slivers: [
+                        SliverPadding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          sliver: SliverGrid(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount:
+                                  MediaQuery.of(context).size.width > 500
+                                      ? 4
+                                      : 2,
+                              childAspectRatio: (9 / 16),
+                              mainAxisSpacing: 10,
+                              crossAxisSpacing: 10,
+                            ),
+                            delegate: SliverChildBuilderDelegate(
+                              (_, i) {
+                                final comic = _con.allComics[i];
+                                return Stack(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (_) => ComicDetailsView(
+                                              comic: comic,
+                                              heroTag: 'comic_ detail',
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: Container(
+                                        foregroundDecoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              blurRadius: .7,
+                                            ),
+                                          ],
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: CachedNetworkImageProvider(
+                                              '${comic.thumbnail?.path}.${comic.thumbnail?.extension}',
+                                            ),
                                           ),
                                         ),
-                                      );
-                                    },
-                                    child: Container(
-                                      foregroundDecoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        boxShadow: [
-                                          BoxShadow(
+                                        alignment: Alignment.bottomLeft,
+                                        child: Container(
+                                          decoration: BoxDecoration(
                                             color:
                                                 Theme.of(context).primaryColor,
-                                            blurRadius: .7,
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              bottomLeft: Radius.circular(10),
+                                              bottomRight: Radius.circular(10),
+                                            ),
                                           ),
-                                        ],
-                                        image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: CachedNetworkImageProvider(
-                                            '${comic.thumbnail?.path}.${comic.thumbnail?.extension}',
-                                          ),
-                                        ),
-                                      ),
-                                      alignment: Alignment.bottomLeft,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Theme.of(context).primaryColor,
-                                          borderRadius: const BorderRadius.only(
-                                            bottomLeft: Radius.circular(10),
-                                            bottomRight: Radius.circular(10),
-                                          ),
-                                        ),
-                                        width: double.infinity,
-                                        padding: const EdgeInsets.all(8),
-                                        child: Text(
-                                          comic.title ?? '',
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .secondary,
+                                          width: double.infinity,
+                                          padding: const EdgeInsets.all(8),
+                                          child: Text(
+                                            comic.title ?? '',
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              );
-                            },
-                            childCount: _con.allComics.length,
-                          ),
-                        ),
-                      ),
-                      if (_con.searchTerm == null && _con.allComics.isNotEmpty)
-                        const SliverToBoxAdapter(
-                          child: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Center(
-                              child: SpinKitThreeBounce(
-                                color: Colors.red,
-                                size: 30.0,
-                              ),
+                                  ],
+                                );
+                              },
+                              childCount: _con.allComics.length,
                             ),
                           ),
-                        )
-                    ],
+                        ),
+                        if (_con.searchTerm == null &&
+                            _con.allComics.isNotEmpty)
+                          const SliverToBoxAdapter(
+                            child: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Center(
+                                child: SpinKitThreeBounce(
+                                  color: Colors.red,
+                                  size: 30.0,
+                                ),
+                              ),
+                            ),
+                          )
+                      ],
+                    ),
                   ),
                 ),
             ],

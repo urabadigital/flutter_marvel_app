@@ -106,181 +106,174 @@ class MyHomePageState extends StateMVC<MyHomePage> {
                 )
               else
                 Expanded(
-                  child: RefreshIndicator(
-                    onRefresh: _con.refresh,
-                    child: CustomScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      controller: _con.scrollController,
-                      slivers: [
-                        SliverPadding(
-                          padding: const EdgeInsets.all(0),
-                          sliver: SliverToBoxAdapter(
-                            child: Column(
-                              children: <Widget>[
-                                ListTile(
-                                  contentPadding:
-                                      const EdgeInsets.symmetric(vertical: 0),
-                                  title: Text(
-                                    'All Comics',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall,
-                                  ),
-                                  trailing: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const AllComicsView(),
+                  child: CustomScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    controller: _con.scrollController,
+                    slivers: [
+                      SliverPadding(
+                        padding: const EdgeInsets.all(0),
+                        sliver: SliverToBoxAdapter(
+                          child: Column(
+                            children: <Widget>[
+                              ListTile(
+                                contentPadding:
+                                    const EdgeInsets.symmetric(vertical: 0),
+                                title: Text(
+                                  'All Comics',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style:
+                                      Theme.of(context).textTheme.headlineSmall,
+                                ),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AllComicsView(),
+                                          ),
+                                        );
+                                      },
+                                      icon: Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              AllComicCarrouselWidget(
+                                comics: _con.allComics,
+                                heroTag: 'all_comic',
+                              ),
+                              const SizedBox(height: 5),
+                              ListTile(
+                                contentPadding:
+                                    const EdgeInsets.symmetric(vertical: 0),
+                                title: Text(
+                                  'New Spider Man Comics',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style:
+                                      Theme.of(context).textTheme.headlineSmall,
+                                ),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AllWithOutComicsView(
+                                              title: 'Spider-Man',
                                             ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                          ),
+                                        );
+                                      },
+                                      icon: Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                AllComicCarrouselWidget(
-                                  comics: _con.allComics,
-                                  heroTag: 'all_comic',
+                              ),
+                              ComicCarrouselWidget(
+                                comics: _con.spidermanComic,
+                                heroTag: 'spiderman_comic',
+                              ),
+                              const SizedBox(height: 5),
+                              ListTile(
+                                contentPadding:
+                                    const EdgeInsets.symmetric(vertical: 0),
+                                title: Text(
+                                  'Popular  X-Men Comics',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style:
+                                      Theme.of(context).textTheme.headlineSmall,
                                 ),
-                                const SizedBox(height: 5),
-                                ListTile(
-                                  contentPadding:
-                                      const EdgeInsets.symmetric(vertical: 0),
-                                  title: Text(
-                                    'New Spider Man Comics',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall,
-                                  ),
-                                  trailing: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const AllWithOutComicsView(
-                                                title: 'Spider-Man',
-                                              ),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AllWithOutComicsView(
+                                              title: 'X-Men',
                                             ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                          ),
+                                        );
+                                      },
+                                      icon: Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                ComicCarrouselWidget(
-                                  comics: _con.spidermanComic,
-                                  heroTag: 'spiderman_comic',
+                              ),
+                              ComicCarrouselWidget(
+                                comics: _con.xmenComic,
+                                heroTag: 'xmen_comic',
+                              ),
+                              const SizedBox(height: 5),
+                              ListTile(
+                                contentPadding:
+                                    const EdgeInsets.symmetric(vertical: 0),
+                                title: Text(
+                                  'Popular Thor Comics',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style:
+                                      Theme.of(context).textTheme.headlineSmall,
                                 ),
-                                const SizedBox(height: 5),
-                                ListTile(
-                                  contentPadding:
-                                      const EdgeInsets.symmetric(vertical: 0),
-                                  title: Text(
-                                    'Popular  X-Men Comics',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall,
-                                  ),
-                                  trailing: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const AllWithOutComicsView(
-                                                title: 'X-Men',
-                                              ),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AllWithOutComicsView(
+                                              title: 'Thor',
                                             ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                          ),
+                                        );
+                                      },
+                                      icon: Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                ComicCarrouselWidget(
-                                  comics: _con.xmenComic,
-                                  heroTag: 'xmen_comic',
-                                ),
-                                const SizedBox(height: 5),
-                                ListTile(
-                                  contentPadding:
-                                      const EdgeInsets.symmetric(vertical: 0),
-                                  title: Text(
-                                    'Popular Thor Comics',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall,
-                                  ),
-                                  trailing: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const AllWithOutComicsView(
-                                                title: 'Thor',
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                ComicCarrouselWidget(
-                                  comics: _con.thorComic,
-                                  heroTag: 'thor_comic',
-                                ),
-                                const SizedBox(height: 5),
-                              ],
-                            ),
+                              ),
+                              ComicCarrouselWidget(
+                                comics: _con.thorComic,
+                                heroTag: 'thor_comic',
+                              ),
+                              const SizedBox(height: 5),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
             ],
