@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.bia.test" "\0"
-            VALUE "FileDescription", "bia" "\0"
+            VALUE "CompanyName", "com.marvel.app" "\0"
+            VALUE "FileDescription", "marvel" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "bia" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.bia.test. All rights reserved." "\0"
-            VALUE "OriginalFilename", "bia.exe" "\0"
-            VALUE "ProductName", "bia" "\0"
+            VALUE "InternalName", "marvel" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 com.marvel.app. All rights reserved." "\0"
+            VALUE "OriginalFilename", "marvel.exe" "\0"
+            VALUE "ProductName", "marvel" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -3,7 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../../../core/controllers/home_controller.dart';
-import '../../../core/providers/themechanger.dart';
+import '../../../core/providers/theme_changer.dart';
 import '../../widgets/comic/comics_carrousel.dart';
 import '../../widgets/home/all_comic_carrousel.dart';
 import '../character/search_view.dart';
