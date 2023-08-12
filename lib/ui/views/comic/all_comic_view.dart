@@ -184,7 +184,7 @@ class AllComicsViewState extends StateMVC<AllComicsView> {
                                             BoxShadow(
                                               color: Theme.of(context)
                                                   .primaryColor,
-                                              blurRadius: .7,
+                                              blurRadius: 0.7,
                                             ),
                                           ],
                                           image: DecorationImage(

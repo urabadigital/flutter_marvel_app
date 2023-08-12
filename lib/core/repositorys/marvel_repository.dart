@@ -1,25 +1,20 @@
 import 'dart:convert';
 
-import 'package:convert/convert.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:crypto/crypto.dart' as crypto;
+import 'package:crypto/crypto.dart';
 
 import '../../helper/const/consts.dart';
 import '../../helper/const/keys.dart';
 import '../models/character.dart';
 import '../models/comic.dart';
 
-const characterApi = '${Const.baseUrl}/v1/public/characters';
-const comicsApi = '${Const.baseUrl}/v1/public/comics';
 const timestamp = '1';
 const itemsPerPage = 20;
 
 generateMd5(String data) {
-  var content = const Utf8Encoder().convert(data);
-  var md5 = crypto.md5;
-  var digest = md5.convert(content);
-  return hex.encode(digest.bytes);
+  String md = md5.convert(utf8.encode(data)).toString();
+  return md;
 }
 
 @override
@@ -44,7 +39,7 @@ Future<List<Character>> getCharacters({
       queryParameters['nameStartsWith'] = searchTerm;
     }
     var response =
-        await Dio().get(characterApi, queryParameters: queryParameters);
+        await Dio().get(Const.characterApi, queryParameters: queryParameters);
     if (kDebugMode) {
       print('Response status: ${response.statusCode}');
     }
@@ -78,7 +73,7 @@ Future<List<Comic>> getComics({
     }
 
     var response = await Dio().get(
-      comicsApi,
+      Const.comicsApi,
       queryParameters: queryParameters,
     );
     final jsonValue = jsonDecode(response.toString());
@@ -193,7 +188,7 @@ Future<List<Comic>> getAllWithOutComics({
       "limit": limit.toString(),
     };
     var response = await Dio().get(
-      comicsApi,
+      Const.comicsApi,
       queryParameters: queryParameters,
     );
     final jsonValue = jsonDecode(response.toString());
