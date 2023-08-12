@@ -1,4 +1,4 @@
-import 'package:bia/core/models/comic.dart';
+import 'package:marvel/core/models/comic.dart';
 import 'package:flutter/material.dart' hide Image;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:photo_view/photo_view.dart';

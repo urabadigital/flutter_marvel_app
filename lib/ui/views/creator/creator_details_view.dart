@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/controllers/home_controller.dart';
 import '../../../core/models/comic.dart';
-import '../../../core/providers/themechanger.dart';
+import '../../../core/providers/theme_changer.dart';
 import '../../widgets/comic/comics_carrousel.dart';
 
 class CreatorDetailsView extends StatefulWidget {

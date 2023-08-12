@@ -2,7 +2,7 @@
 
 A new Flutter project with [Marvel Comics api](https://developer.marvel.com/).
 
-- An marvelapp contains information about All Marvel Characters and comics.
+- An marvel_app contains information about All Marvel Characters and comics.
 - I used [mvc_pattern](https://pub.dev/packages/mvc_pattern) package for State Management.
 
 
